@@ -4,7 +4,8 @@ import "./CzHeader.less";
 const CzHeader: React.FC = () => {
     return (
         <header className="cz-czHeader">
-            头
+            <div className="logoWrapper"></div>
+            <div className="organization">崇臻智能科技有限公司</div>
         </header>
     )
 };

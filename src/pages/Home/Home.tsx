@@ -3,7 +3,7 @@ import React, {useState} from "react";
 const Home = () => {
 
     return (
-        <div>
+        <div className="cz-czHome">
             主页
         </div>
     )

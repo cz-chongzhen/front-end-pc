@@ -21,7 +21,7 @@ const CzSplitPanel: React.FC<ICzSplitPanelProps> = (props: ICzSplitPanelProps) =
                 nested ?
                     <SplitPane
                         split={split}
-                        defaultSize={defaultSize ? defaultSize : 260}
+                        defaultSize={defaultSize ? defaultSize : 200}
                     >
                         {left}
                         <SplitPane
@@ -34,7 +34,7 @@ const CzSplitPanel: React.FC<ICzSplitPanelProps> = (props: ICzSplitPanelProps) =
                     :
                     <SplitPane
                         split={split}
-                        defaultSize={260}
+                        defaultSize={200}
                     >
                         {left}
                         {right}

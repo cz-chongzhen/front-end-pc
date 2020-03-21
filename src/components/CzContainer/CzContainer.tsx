@@ -73,7 +73,7 @@ const CzContainer: React.FC = (props) => {
                         />
                     }
                     right={children}
-                    defaultSize={260}
+                    defaultSize={200}
                 />
             </div>
         </div>

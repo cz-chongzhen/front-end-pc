@@ -1,13 +1,47 @@
-import React from "react";
+import React, {useState} from "react";
 import {Button} from "antd";
 import "./Login.less";
+import CzModal from "../../components/CzModal/CzModal";
 
 const Login: React.FC = () => {
 
+    const [modalProps, setModalProps] = useState({
+        visible: false
+    });
+
+    const onOk = () => {
+        setModalProps(state => ({
+            ...state,
+            visible: false
+        }))
+    };
+
+    const onCancel = () => {
+        setModalProps(state => ({
+            ...state,
+            visible: false
+        }))
+    };
+
+    const login = () => {
+        setModalProps(state => ({
+            ...state,
+            visible: true
+        }))
+    };
+
     return (
         <div className="cz-czLogin">
-            <Button type="primary">登录</Button>
-            <div className="title">你好</div>
+            <div className="title" onClick={login}>登录页</div>
+
+            <CzModal
+                title="系统提示"
+                visible={modalProps.visible}
+                onOk={onOk}
+                onCancel={onCancel}
+            >
+                鸟狗
+            </CzModal>
         </div>
     )
 };

@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import {Menu} from "antd";
 import "./CzNav.less";
-import {CaretLeftOutlined} from "@ant-design/icons/lib";
+import {CaretLeftOutlined, CaretRightOutlined} from "@ant-design/icons/lib";
 
 const {SubMenu, Item} = Menu;
 
@@ -58,7 +58,7 @@ const CzNav: React.FC<ICzNavProps> = (props: ICzNavProps) => {
             clearTimeout(timer)
         }
         if (isCollapse) { // 说明处于折叠状态
-            navWrapperDom.current.parentNode.style.width = "260px";
+            navWrapperDom.current.parentNode.style.width = "200px";
             timer = setTimeout(() => {
                 navWrapperDom.current.parentNode.style.transition = `none`;
             }, 300);
@@ -84,7 +84,12 @@ const CzNav: React.FC<ICzNavProps> = (props: ICzNavProps) => {
             </Menu>
 
             <div className="collapseBtn" onClick={collapseBtnClick}>
-                <CaretLeftOutlined/>
+                {
+                    isCollapse ?
+                        <CaretRightOutlined className="collapse_icon"/>
+                        :
+                        <CaretLeftOutlined className="collapse_icon"/>
+                }
             </div>
         </div>
     )
