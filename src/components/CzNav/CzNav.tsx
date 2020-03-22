@@ -1,7 +1,6 @@
-import React, {useRef, useState} from "react";
+import React from "react";
 import {Menu} from "antd";
 import "./CzNav.less";
-import {CaretLeftOutlined, CaretRightOutlined} from "@ant-design/icons/lib";
 
 const {SubMenu, Item} = Menu;
 
@@ -22,9 +21,6 @@ export interface IMenuData {
 const CzNav: React.FC<ICzNavProps> = (props: ICzNavProps) => {
 
     const {menuData, menuSelect, menuOnOpenChange, openKeys, selectedKeys} = props;
-    const navWrapperDom: any = useRef(null);
-    const [isCollapse, setIsCollapse] = useState(false);
-    let timer: any;
 
     /**
      * 渲染菜单数据
@@ -50,27 +46,8 @@ const CzNav: React.FC<ICzNavProps> = (props: ICzNavProps) => {
         })
     };
 
-    /**
-     * 折叠按钮的点击事件
-     */
-    const collapseBtnClick = (): void => {
-        if (timer) {
-            clearTimeout(timer)
-        }
-        if (isCollapse) { // 说明处于折叠状态
-            navWrapperDom.current.parentNode.style.width = "200px";
-            timer = setTimeout(() => {
-                navWrapperDom.current.parentNode.style.transition = `none`;
-            }, 300);
-        } else {
-            navWrapperDom.current.parentNode.style.transition = `all 0.3s`;
-            navWrapperDom.current.parentNode.style.width = "0"
-        }
-        setIsCollapse(!isCollapse);
-    };
-
     return (
-        <div className="cz-CzNav" ref={navWrapperDom}>
+        <div className="cz-CzNav">
             <Menu
                 mode="inline"
                 openKeys={openKeys}
@@ -82,15 +59,6 @@ const CzNav: React.FC<ICzNavProps> = (props: ICzNavProps) => {
                     renderMenu(menuData)
                 }
             </Menu>
-
-            <div className="collapseBtn" onClick={collapseBtnClick}>
-                {
-                    isCollapse ?
-                        <CaretRightOutlined className="collapse_icon"/>
-                        :
-                        <CaretLeftOutlined className="collapse_icon"/>
-                }
-            </div>
         </div>
     )
 };
