@@ -1,19 +1,14 @@
 import React from "react";
-import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
-import {CzContainer} from "../components/CzContainer";
-import Home from "../pages/Home/Home";
-//@ts-ignore
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {Login} from "../pages/Login";
+import PageRouter from "./PageRouter";
 
-const AppRouter: React.FC = () => (
+const AppRouter: React.FC<any> = () => (
     <BrowserRouter>
-        <CzContainer>
-            <Switch>
-                <Route exact path="/" component={Login}/>
-                <Route path="/Home" component={Home}/>
-                <Redirect exact from="/" to="/Home"/>
-            </Switch>
-        </CzContainer>
+        <Switch>
+            <Route exact path="/" component={Login}/>
+            <Route path="/page" component={PageRouter}/>
+        </Switch>
     </BrowserRouter>
 );
 
